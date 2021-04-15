@@ -1,0 +1,7 @@
+{
+    "wath": ["src"],
+    "ext": "ts",
+    "execMap": {
+        "ts": "ts-node src/index.ts"
+    }
+}

@@ -1,0 +1,5 @@
+enum TipoAssinatura{
+    PREMIUN,
+    BASICA
+
+}
