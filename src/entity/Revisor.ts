@@ -13,8 +13,8 @@ export class Revisor extends Funcionario{
     @JoinTable()
     private _livrosTrabalhados: Array<Livro>;
 
-    @ManyToMany(type => Conto, conto => conto.getRevisores)
-    @JoinTable()
+   // @ManyToMany(type => Conto, conto => conto.getRevisores)
+   // @JoinTable()
     private _contosTrabalhados: Array<Conto>;
 
     public get getIdRevisor(){

@@ -17,7 +17,7 @@ export class Revista {
     @ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
     private _responsavel: Editor;
 
-    @OneToMany(type => Conto, conto => conto.getNumeroRevista)
+    //@OneToMany(type => Conto, conto => conto.getNumeroRevista)
     private _contos: Array<Conto>;
 
     public get getIdRevista(){

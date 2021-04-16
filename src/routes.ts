@@ -1,6 +1,7 @@
 import {Router, Request, Response} from 'express'
 import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '../src/controller/TasksController'
 import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getAssinaturas} from './controller/AssinaturaController'
+import { getConto, getContos } from './controller/ContoController'
 import { getFuncionario, getFuncionarios, saveFuncionario, updateFuncionario, removeFuncionario } from './controller/FuncionarioController'
 import { getPessoas, getPessoa, savePessoa, updatePessoa, removePessoa} from './controller/PessoaController'
 
@@ -39,6 +40,11 @@ routes.delete('/funcionarios/:_idFuncionario', removeFuncionario)
 
 //ROTAS DE DESCENDENTE
 routes.get('/descendentes', getFuncionario)
+
+
+//ROTAS DE CONTO
+routes.get('/contos', getContos)
+routes.get('/contos/:_idConto', getConto)
 
 
 export default routes

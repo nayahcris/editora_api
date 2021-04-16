@@ -1,10 +1,11 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn} from "typeorm";
 import { Editor } from "./Editor";
 import { Qrcode } from "./Qrcode";
 import { Ra } from "./Ra";
 import { Revisor } from "./Revisor";
 import { Designer } from "./Designer";
 import { Revista } from "./Revista";
+import { TextDecoder } from "util";
 
 
 @Entity()
@@ -15,8 +16,8 @@ export class Conto {
     @Column()
     private _nomeConto: string;
 
-    @ManyToOne(type => Revista, revista => revista.getContos)
-    private _numeroRevista: Revista;
+    //@ManyToOne(type => Revista, revista => revista.getContos)
+    //private _numeroRevista: Revista;
 
     @Column()
     private _registroISBN: string;
@@ -24,23 +25,32 @@ export class Conto {
     @Column()
     private _autor: string;
 
-    @ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
-    private _editor: Editor;
+    @Column("text")
+    private _conteudo: string;
 
-    @ManyToOne(type => Designer, designer => designer.getLivrosTrabalhados)
-    private _designer: Designer;
+    @CreateDateColumn()
+    private _dataCriacao: Date;
 
-    @ManyToMany(type => Revisor, revisor => revisor.getLivrosTrabalhados)
-    @JoinTable()
-    private _revisores: Array<Revisor>;
+    @UpdateDateColumn()
+    private _dataUpdate: Date;
 
-    @ManyToMany(type => Qrcode, qrcode => qrcode.getIdQrcode)
-    @JoinTable()
-    private _qrcode: Qrcode;
+//@ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
+   // private _editor: Editor;
 
-    @ManyToMany(type => Ra, ra => ra.getIdRa)
-    @JoinTable()
-    private _ra: Ra;
+    //@ManyToOne(type => Designer, designer => designer.getLivrosTrabalhados)
+    // _designer: Designer;
+
+//@ManyToMany(type => Revisor, revisor => revisor.getLivrosTrabalhados)
+   // @JoinTable()
+    //private _revisores: Array<Revisor>;
+
+   // @ManyToMany(type => Qrcode, qrcode => qrcode.getIdQrcode)
+   // @JoinTable()
+   // private _qrcode: Qrcode;
+
+    //@ManyToMany(type => Ra, ra => ra.getIdRa)
+  //  @JoinTable()
+   // private _ra: Ra;
 
 
     public get getIdConto(){
@@ -55,14 +65,23 @@ export class Conto {
         this._nomeConto = nomeConto;
     }
 
-    public get getNumeroRevista(){
+/*public get getNumeroRevista(){
         return this._numeroRevista;
     }
-
-
-    public set setNumeroRevista(numeroRevista: Revista){
+      public set setNumeroRevista(numeroRevista: Revista){
         this._numeroRevista = numeroRevista;
     }
+    */
+
+    public set setConteudo(conteudo: string){
+        this._conteudo = conteudo;
+    }
+
+    public get getConteudo(){
+        return this._conteudo;
+    }
+
+
 
     public get getRegistroISBN(){
         return this._registroISBN;
@@ -80,46 +99,46 @@ export class Conto {
         this._autor = autor;
     }
 
-    public get getEditor(){
-        return this._editor;
-    }
+    //public get getEditor(){
+    //    return this._editor;
+//}
 
-    public set setEditor(editor: Editor){
-        this._editor = editor;
-    }
+   // public set setEditor(editor: Editor){
+   //     this._editor = editor;
+   // }
 
-    public get getDesigner(){
-        return this._designer;
-    }
+    //public get getDesigner(){
+   //     return this._designer;
+   // }
 
-    public set setDesigner(designer: Designer){
-        this._designer = designer;
-    }
+//public set setDesigner(designer: Designer){
+//this._designer = designer;
+//}
 
-    public get getRevisores(){
-        return this._revisores.toString();
-    }
+//public get getRevisores(){
+  //      return this._revisores.toString();
+   // }
 
-    public set setRevisores(revisor: Revisor){
-        this._revisores.push(revisor);
-    }
+   // public set setRevisores(revisor: Revisor){
+    //    this._revisores.push(revisor);
+//}
 
 
-    public get getQrcode(){
-        return this._qrcode;
-    }
+//public get getQrcode(){
+//return this._qrcode;
+//    }
 
-    public set setQrcode(qrcode: Qrcode){
-        this._qrcode = qrcode;
-    }
+   // public set setQrcode(qrcode: Qrcode){
+  //      this._qrcode = qrcode;
+  //  }
     
-    public get getRa(){
-        return this._ra;
-    }
+  //  public get getRa(){
+ //       return this._ra;
+ //   }
 
-    public set setRa(ra: Ra){
-        this._ra = ra;
-    }
+//    public set setRa(ra: Ra){
+  //      this._ra = ra;
+    //}
 
 
 }
