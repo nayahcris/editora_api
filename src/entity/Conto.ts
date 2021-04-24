@@ -5,7 +5,6 @@ import { Ra } from "./Ra";
 import { Revisor } from "./Revisor";
 import { Designer } from "./Designer";
 import { Revista } from "./Revista";
-import { TextDecoder } from "util";
 
 
 @Entity()
@@ -16,8 +15,8 @@ export class Conto {
     @Column()
     private _nomeConto: string;
 
-    //@ManyToOne(type => Revista, revista => revista.getContos)
-    //private _numeroRevista: Revista;
+    @ManyToOne(type => Revista, revista => revista.getNumeroRevista, {nullable: true})
+    private _numeroRevista: Revista;
 
     @Column()
     private _registroISBN: string;
@@ -27,6 +26,9 @@ export class Conto {
 
     @Column("text")
     private _conteudo: string;
+
+    @Column("text")
+    private _sinopse: string;
 
     @CreateDateColumn()
     private _dataCriacao: Date;
@@ -65,13 +67,14 @@ export class Conto {
         this._nomeConto = nomeConto;
     }
 
-/*public get getNumeroRevista(){
-        return this._numeroRevista;
-    }
-      public set setNumeroRevista(numeroRevista: Revista){
+    public get getNumeroRevista(){
+            return this._numeroRevista;
+        }
+
+    public set setNumeroRevista(numeroRevista: Revista){
         this._numeroRevista = numeroRevista;
     }
-    */
+
 
     public set setConteudo(conteudo: string){
         this._conteudo = conteudo;

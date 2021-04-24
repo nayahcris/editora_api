@@ -1,9 +1,10 @@
 import {Router, Request, Response} from 'express'
 import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '../src/controller/TasksController'
 import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getAssinaturas} from './controller/AssinaturaController'
-import { getConto, getContos } from './controller/ContoController'
+import { getContos } from './controller/ContoController'
 import { getFuncionario, getFuncionarios, saveFuncionario, updateFuncionario, removeFuncionario } from './controller/FuncionarioController'
 import { getPessoas, getPessoa, savePessoa, updatePessoa, removePessoa} from './controller/PessoaController'
+import { getRevistas } from './controller/RevistaController'
 
 const routes = Router()
 
@@ -44,7 +45,12 @@ routes.get('/descendentes', getFuncionario)
 
 //ROTAS DE CONTO
 routes.get('/contos', getContos)
-routes.get('/contos/:_idConto', getConto)
+//routes.get('/contos/:_idConto', getConto)
+
+
+
+//ROTAS DE REVISTA
+routes.get('/revistas', getRevistas)
 
 
 export default routes

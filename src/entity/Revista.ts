@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinTable} from "typeorm";
 import { Editor } from "./Editor";
 import { Conto } from "./Conto";
 
@@ -14,11 +14,12 @@ export class Revista {
     @Column()
     private _generoRevista: string;
 
-    @ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
+    //@ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
     private _responsavel: Editor;
 
-    //@OneToMany(type => Conto, conto => conto.getNumeroRevista)
-    private _contos: Array<Conto>;
+    /*@OneToMany(type => Conto, conto => conto.getNumeroRevista, {nullable: true, cascade: ['insert']})
+    @JoinTable()
+    private _contos: Array<Conto>;*/
 
     public get getIdRevista(){
         return this._idRevista;
@@ -48,13 +49,13 @@ export class Revista {
         this._responsavel = responsavel;
     }
 
-    public get getContos(){
+    /*public get getContos(){
         return this._contos.toString();
     }
 
     public set setContos(conto: Conto){
         this._contos.push(conto);
-    }
+    }*/
 
 
 }
