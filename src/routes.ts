@@ -4,7 +4,7 @@ import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getA
 import { getConto, getContos } from './controller/ContoController'
 import { getFuncionario, getFuncionarios, saveFuncionario, updateFuncionario, removeFuncionario } from './controller/FuncionarioController'
 import { getPessoas, getPessoa, savePessoa, updatePessoa, removePessoa} from './controller/PessoaController'
-import { getRevistas } from './controller/RevistaController'
+import { getRevistas, getRevista } from './controller/RevistaController'
 
 const routes = Router()
 
@@ -51,6 +51,7 @@ routes.get('/contos/:_idConto', getConto)
 
 //ROTAS DE REVISTA
 routes.get('/revistas', getRevistas)
+routes.get('/revistas/:_idRevista', getRevista)
 
 
 export default routes
