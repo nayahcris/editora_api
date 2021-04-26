@@ -8,6 +8,8 @@ import { getRevistas, getRevista } from './controller/RevistaController'
 
 const routes = Router()
 
+routes.get('/', getTask)
+
 routes.get('/tasks', getTasks)
 routes.get('/tasks/:id', getTask)
 routes.post('/tasks', saveTask)
