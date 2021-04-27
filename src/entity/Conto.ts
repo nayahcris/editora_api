@@ -36,15 +36,14 @@ export class Conto {
     @UpdateDateColumn()
     private _dataUpdate: Date;
 
-//@ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
-   // private _editor: Editor;
+    @ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
+    private _editor: Editor;
 
-    //@ManyToOne(type => Designer, designer => designer.getLivrosTrabalhados)
-    // _designer: Designer;
+    @ManyToOne(type => Designer, designer => designer.getLivrosTrabalhados)
+    private _designer: Designer;
 
-   //@ManyToMany(type => Revisor, revisor => revisor.getLivrosTrabalhados)
-   // @JoinTable()
-    //private _revisores: Array<Revisor>;
+    @ManyToOne(type => Revisor, revisor => revisor.getLivrosTrabalhados)
+    private _revisores: Revisor;
 
     @ManyToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)
     private _qrcode: Qrcode;
@@ -100,46 +99,46 @@ export class Conto {
         this._autor = autor;
     }
 
-    //public get getEditor(){
-    //    return this._editor;
-//}
+    public get getEditor(){
+    return this._editor;
+}
 
-   // public set setEditor(editor: Editor){
-   //     this._editor = editor;
-   // }
+   public set setEditor(editor: Editor){
+       this._editor = editor;
+}
 
-    //public get getDesigner(){
-   //     return this._designer;
-   // }
+    public get getDesigner(){
+       return this._designer;
+   }
 
-//public set setDesigner(designer: Designer){
-//this._designer = designer;
-//}
+public set setDesigner(designer: Designer){
+this._designer = designer;
+}
 
-//public get getRevisores(){
-  //      return this._revisores.toString();
-   // }
+public get getRevisores(){
+    return this._revisores;
+   }
 
-   // public set setRevisores(revisor: Revisor){
-    //    this._revisores.push(revisor);
-//}
+   public set setRevisores(revisor: Revisor){
+    this._revisores = revisor;
+}
 
 
-//public get getQrcode(){
-//return this._qrcode;
-//    }
+public get getQrcode(){
+return this._qrcode;
+   }
 
-   // public set setQrcode(qrcode: Qrcode){
-  //      this._qrcode = qrcode;
-  //  }
+   public set setQrcode(qrcode: Qrcode){
+ this._qrcode = qrcode;
+  }
     
-  //  public get getRa(){
- //       return this._ra;
- //   }
+public get getRa(){
+     return this._ra;
+    }
 
-//    public set setRa(ra: Ra){
-  //      this._ra = ra;
-    //}
+   public set setRa(ra: Ra){
+      this._ra = ra;
+   }
 
 
 }

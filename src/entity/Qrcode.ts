@@ -13,7 +13,7 @@ export class Qrcode {
     @Column()
     private _urlDoArquivo: string;
 
-    //@ManyToOne(type => Designer, designer => designer.getIdDesigner)
+    @ManyToOne(type => Designer, designer => designer.getIdDesigner)
     private _designerResponsavel: Designer;
 
     @Column({default: false})

@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, FileLogger, ManyToOne, OneToMany, ManyToMany, JoinTable} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, ManyToMany, JoinTable, OneToOne} from "typeorm";
 import { Editor } from "./Editor";
 import { Qrcode } from "./Qrcode";
 import { Ra } from "./Ra";
@@ -31,16 +31,13 @@ export class Livro {
     @ManyToOne(type => Tradutor, tradutor => tradutor.getLivrosTrabalhados)
     private _tradutor: Tradutor;
 
-    @ManyToMany(type => Revisor, revisor => revisor.getLivrosTrabalhados)
-    @JoinTable()
-    private _revisores: Array<Revisor>;
+    @ManyToOne(type => Revisor, revisor => revisor.getLivrosTrabalhados)
+    private _revisores: Revisor;
 
-    @ManyToMany(type => Qrcode, qrcode => qrcode.getIdQrcode)
-    @JoinTable()
+    @OneToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)
     private _qrcode: Qrcode;
 
-    @ManyToMany(type => Ra, ra => ra.getIdRa)
-    @JoinTable()
+    @OneToOne(type => Ra, ra => ra.getIdRa)
     private _ra: Ra;
 
 
@@ -97,11 +94,11 @@ export class Livro {
     }
 
     public get getRevisores(){
-        return this._revisores.toString();
+        return this._revisores;
     }
 
     public set setRevisores(revisor: Revisor){
-        this._revisores.push(revisor);
+        this._revisores = revisor;
     }
 
 

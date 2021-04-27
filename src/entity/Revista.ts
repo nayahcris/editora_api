@@ -14,7 +14,7 @@ export class Revista {
     @Column()
     private _generoRevista: string;
 
-    //@ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
+    @ManyToOne(type => Editor, editor => editor.getContosTrabalhados)
     private _responsavel: Editor;
 
 

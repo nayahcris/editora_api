@@ -11,6 +11,9 @@ export class Designer extends Funcionario{
     @PrimaryGeneratedColumn()
     private _idDesigner: number;
 
+    @OneToMany(type => Conto, conto => conto.getEditor)
+    private _contosTrabalhados: Array<Conto>;
+
     @OneToMany(type => Livro, livro => livro.setDesigner)
     private _livrosTrabalhados: Array<Livro>;
 

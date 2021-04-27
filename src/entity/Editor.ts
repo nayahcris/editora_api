@@ -12,7 +12,7 @@ export class Editor extends Funcionario{
     @OneToMany(type => Livro, livro => livro.getEditor)
     private _livrosTrabalhados: Array<Livro>;
 
-    //@OneToMany(type => Conto, conto => conto.getEditor)
+    @OneToMany(type => Conto, conto => conto.getEditor)
     private _contosTrabalhados: Array<Conto>;
 
     public get getIdEditor(){

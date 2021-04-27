@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinTable} from "typeorm";
 import { Livro } from "./Livro";
 import { Conto } from "./Conto";
 import { Funcionario } from "./Funcionario";
@@ -9,12 +9,11 @@ export class Revisor extends Funcionario{
     @PrimaryGeneratedColumn()
     private _idRevisor: number;
 
-    @ManyToMany(type => Livro, livro => livro.getRevisores)
+    @OneToMany(type => Livro, livro => livro.getRevisores)
     @JoinTable()
     private _livrosTrabalhados: Array<Livro>;
 
-   // @ManyToMany(type => Conto, conto => conto.getRevisores)
-   // @JoinTable()
+    @OneToMany(type => Conto, conto => conto.getRevisores)
     private _contosTrabalhados: Array<Conto>;
 
     public get getIdRevisor(){
