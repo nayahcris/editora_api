@@ -17,9 +17,6 @@ export class Revista {
     //@ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
     private _responsavel: Editor;
 
-    /*@OneToMany(type => Conto, conto => conto.getNumeroRevista, {nullable: true, cascade: ['insert']})
-    @JoinTable()
-    private _contos: Array<Conto>;*/
 
     public get getIdRevista(){
         return this._idRevista;

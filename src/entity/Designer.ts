@@ -14,9 +14,6 @@ export class Designer extends Funcionario{
     @OneToMany(type => Livro, livro => livro.setDesigner)
     private _livrosTrabalhados: Array<Livro>;
 
-   // @OneToMany(type => Conto, conto => conto.getDesigner)
-    private _contosTrabalhados: Array<Conto>;
-
     public get getIdDesigner(){
         return this._idDesigner;
     }
@@ -29,11 +26,4 @@ export class Designer extends Funcionario{
         this._livrosTrabalhados.push(livroTrabalhado);
     }
 
-    public get getContosTrabalhados(){
-        return this._contosTrabalhados;
-    }
-
-    public set setContoTrabalhado(contoTrabalhado: Conto){
-        this._contosTrabalhados.push(contoTrabalhado);
-    }
 }

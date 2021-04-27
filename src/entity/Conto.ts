@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn, OneToOne} from "typeorm";
 import { Editor } from "./Editor";
 import { Qrcode } from "./Qrcode";
 import { Ra } from "./Ra";
@@ -42,17 +42,15 @@ export class Conto {
     //@ManyToOne(type => Designer, designer => designer.getLivrosTrabalhados)
     // _designer: Designer;
 
-//@ManyToMany(type => Revisor, revisor => revisor.getLivrosTrabalhados)
+   //@ManyToMany(type => Revisor, revisor => revisor.getLivrosTrabalhados)
    // @JoinTable()
     //private _revisores: Array<Revisor>;
 
-   // @ManyToMany(type => Qrcode, qrcode => qrcode.getIdQrcode)
-   // @JoinTable()
-   // private _qrcode: Qrcode;
+    @ManyToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)
+    private _qrcode: Qrcode;
 
-    //@ManyToMany(type => Ra, ra => ra.getIdRa)
-  //  @JoinTable()
-   // private _ra: Ra;
+    @ManyToOne(type => Ra, ra => ra.getIdRa, {nullable: true})
+    private _ra: Ra;
 
 
     public get getIdConto(){

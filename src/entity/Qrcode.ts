@@ -11,15 +11,12 @@ export class Qrcode {
     private _nome: string;
 
     @Column()
-    private _descricao: string;
+    private _urlDoArquivo: string;
 
-    @Column()
-    private _nomeDoArquivo: string;
-
-    @ManyToOne(type => Designer, designer => designer.getIdDesigner)
+    //@ManyToOne(type => Designer, designer => designer.getIdDesigner)
     private _designerResponsavel: Designer;
 
-    @Column()
+    @Column({default: false})
     private _foiPublicado: boolean;
 
     public get getIdQrcode(){
@@ -34,21 +31,6 @@ export class Qrcode {
         this._nome = nome;
     }
 
-    public get getDescricao(){
-        return this._descricao;
-    }
-
-    public set setDescricao(descricao: string){
-        this._descricao = descricao;
-    }
-
-    public get getNomeDoArquivo(){
-        return this._nomeDoArquivo;
-    }
-
-    public set setNomeDoArquivo(nomeDoArquivo: string){
-        this._nomeDoArquivo = nomeDoArquivo;
-    }
 
     public get getDesignerResponsavel(){
         return this._designerResponsavel;

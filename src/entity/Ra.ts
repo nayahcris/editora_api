@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne} from "typeorm";
+import { Conto } from "./Conto";
 import { Designer } from "./Designer";
 
 
@@ -10,17 +11,25 @@ export class Ra {
     @Column()
     private _nome: string;
 
-    @Column()
-    private _descricao: string;
+    //SETAR O TIPO PARA USAR A PÁGINA CERTA
+    @Column({nullable: true})
+    private _tipo: string;
 
-    @Column()
-    private _nomeDoArquivo: string;
+    //MANDAR A URL DO MARCADOR
+    @Column({nullable: true})
+    private _urlMarcador: string;
 
-    @ManyToOne(type => Designer, designer => designer.getIdDesigner)
+    @Column({nullable: true})
+    private _urlDaRA: string;
+
+    //@ManyToOne(type => Designer, designer => designer.getIdDesigner, {nullable: true})
     private _designerResponsavel: Designer;
 
-    @Column()
+    @Column({default: false})
     private _foiPublicado: boolean;
+
+    //@OneToOne(type => Conto, conto => conto.getIdConto, {nullable: true})
+    //private _conto: Conto;
 
     public get getIdRa(){
         return this._idRa;
@@ -34,20 +43,13 @@ export class Ra {
         this._nome = nome;
     }
 
-    public get getDescricao(){
-        return this._descricao;
+    public get getTipo(){
+        return this._tipo;
     }
 
-    public set setDescricao(descricao: string){
-        this._descricao = descricao;
-    }
+    public set setTipo(tipo: string){
+        this._tipo = tipo;
 
-    public get getNomeDoArquivo(){
-        return this._nomeDoArquivo;
-    }
-
-    public set setNomeDoArquivo(nomeDoArquivo: string){
-        this._nomeDoArquivo = nomeDoArquivo;
     }
 
     public get getDesignerResponsavel(){
