@@ -43,7 +43,7 @@ export class Conto {
     private _designer: Designer;
 
     @ManyToOne(type => Revisor, revisor => revisor.getLivrosTrabalhados)
-    private _revisores: Revisor;
+    private _revisor: Revisor;
 
     @ManyToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)
     private _qrcode: Qrcode;
@@ -116,11 +116,11 @@ this._designer = designer;
 }
 
 public get getRevisores(){
-    return this._revisores;
+    return this._revisor;
    }
 
    public set setRevisores(revisor: Revisor){
-    this._revisores = revisor;
+    this._revisor = revisor;
 }
 
 
