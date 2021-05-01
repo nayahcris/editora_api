@@ -3,7 +3,8 @@
    "version": "1.0.0",
    "description": "Projeto para imersão literária.",
    "engines": {
-      "node": "14.x"
+      "node": "14.x",
+      "yarn": "1.x"
     },
    "devDependencies": {
       "@types/cors": "^2.8.10",
