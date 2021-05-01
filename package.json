@@ -19,8 +19,7 @@
       "typeorm": "0.2.32"
    },
    "scripts": {
-      "build": "tsc",
       "dev": "nodemon src/index.ts",
-      "start": "node build/index.js"
+      "start": "ts-node src/index.ts"
    }
 }
