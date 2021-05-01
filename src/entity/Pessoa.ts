@@ -3,7 +3,7 @@ import {Entity, PrimaryGeneratedColumn, Column, DataTypeNotSupportedError, IsNul
 
 
 @Entity()
-export class Pessoa {
+export abstract class Pessoa {
 
     @PrimaryGeneratedColumn()
     _idPessoa: number;

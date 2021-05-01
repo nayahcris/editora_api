@@ -5,7 +5,7 @@ import { Pessoa } from "./Pessoa";
 
 
 @Entity()
-export class Funcionario extends Pessoa{ 
+export abstract class Funcionario extends Pessoa{ 
  
    @PrimaryGeneratedColumn()
    private _idFuncionario: number;
@@ -31,9 +31,9 @@ export class Funcionario extends Pessoa{
    @Column({nullable: true})
    private _nomePai: string;
 
-   @ManyToOne(() => Descendente, _descendentes => Descendente, {cascade: ["insert"]})
-   @JoinTable()
-   _descendentes: Descendente[];
+//@ManyToOne(() => Descendente, _descendentes => Descendente, {cascade: ["insert"]})
+  // @JoinTable()
+   //_descendentes: Descendente[];
 
    public get getIdFuncionario() {
       return this._idFuncionario
@@ -95,10 +95,10 @@ export class Funcionario extends Pessoa{
        this._nomePai = nomePai;
     }
 
-    public get getDependentes(){
+    /*public get getDependentes(){
        return this._descendentes.toString();
     }
     public set setDescendentes(descendentes: Descendente){
        this._descendentes = [ ]
-    }
+    }*/
 }

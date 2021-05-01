@@ -1,7 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToMany, OneToMany} from "typeorm";
 import { Pessoa } from "./Pessoa";
 import { Original } from "./Original";
-import { type } from "os";
 import { Livro } from "./Livro";
 
 
@@ -17,7 +16,7 @@ export class Escritor extends Pessoa{
     @Column()
     private _numeroContratoVigente: number;
 
-    @OneToMany(type => Livro, livro => livro.getAutor)
+    @OneToMany(type => Livro, livro => livro.getEscritor)
     private _originais: Array<Original>;
 
     public get getIdEscritor(){

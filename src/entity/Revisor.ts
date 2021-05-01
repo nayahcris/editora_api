@@ -9,8 +9,7 @@ export class Revisor extends Funcionario{
     @PrimaryGeneratedColumn()
     private _idRevisor: number;
 
-    @OneToMany(type => Livro, livro => livro.getRevisores)
-    @JoinTable()
+    @OneToMany(type => Livro, livro => livro.getRevisor)
     private _livrosTrabalhados: Array<Livro>;
 
     @OneToMany(type => Conto, conto => conto.getRevisores)

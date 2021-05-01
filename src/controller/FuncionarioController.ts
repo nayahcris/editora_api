@@ -1,4 +1,4 @@
-import {getRepository, createQueryBuilder, Connection, getConnection, createConnection} from 'typeorm'
+/*import {getRepository, createQueryBuilder, Connection, getConnection, createConnection} from 'typeorm'
 import {Request, Response} from 'express'
 import { Funcionario } from '../entity/Funcionario'
 import { Pessoa } from '../entity/Pessoa';
@@ -26,7 +26,7 @@ export const getFuncionario = async (request: Request, response: Response) => {
 
 //ADICIONA FUNCIONÁRIO COM 1 DESCENDENTE
 //SALVA PESSOA E DESCENDENTE NA TABELA PESSOA E DESCENDENTE
-export const saveFuncionario = async(request: Request, response: Response) => {
+/*export const saveFuncionario = async(request: Request, response: Response) => {
     const funcionario = new Funcionario ()
     const descendente = new Descendente()
     const {_idPessoa, _nome, _nomeSocial, _genero, _email, _telefone, _whatsapp, _nickname, _cpf , _salario, _pis, _nomeMae, _rg, _carteiraDeTrabalho} = request.body
@@ -58,12 +58,12 @@ export const saveFuncionario = async(request: Request, response: Response) => {
     const SalvaPessoaDescendente = await getRepository(Pessoa).save(descendente)
 
     /*console.log(descendente)*/
-    console.log(descendentes)
+   //// console.log(descendentes)
     //SALVA DESCENDENTE
-    const conexaoDescendente = await getRepository(Descendente).save(descendentes)
-    console.log(conexaoDescendente)
+    ///const conexaoDescendente = await getRepository(Descendente).save(descendentes)
+    ///console.log(conexaoDescendente)
     //PEGA DADOS DE FUNCIONARIO 
-    funcionario._descendentes = descendentes
+    /*funcionario._descendentes = descendentes
     funcionario.setSalario = _salario
     funcionario.setPis = _pis
     funcionario.setRg = _rg
@@ -73,11 +73,11 @@ export const saveFuncionario = async(request: Request, response: Response) => {
     //SALVA FUNCIONARIO
     const Conexaofuncionario = await getRepository(Funcionario).save(funcionario)
     return response.json(Conexaofuncionario)
-};
+};*/
 
 
 //ATUALIZA UM FUNCIONÁRIO
-export const updateFuncionario = async(request: Request, response: Response) => {
+/*export const updateFuncionario = async(request: Request, response: Response) => {
     const { _idFuncionario } = request.params
     const {descendentes}= request.body
     const descendente = new Descendente()
@@ -91,7 +91,7 @@ export const updateFuncionario = async(request: Request, response: Response) => 
                             .getOne();
     console.log(funcionario)*/
 
-    const funcionarioAtualizado = await getRepository(Funcionario).update(_idFuncionario, request.body)
+    //const funcionarioAtualizado = await getRepository(Funcionario).update(_idFuncionario, request.body)
 
     //VERIFICA SE FOI MODIFICADA UMA LINHA
     /*if (funcionario.affected === 1){
@@ -100,10 +100,10 @@ export const updateFuncionario = async(request: Request, response: Response) => 
     }/*
 
     return response.status(404).json({message: "Pessoa não encontrada!"})*/
-};
+//}; 
 
 //DELETA UM FUNCIONÁRIO
-export const removeFuncionario = async (request: Request, response: Response) => {
+/*export const removeFuncionario = async (request: Request, response: Response) => {
     const { _idFuncionario } = request.params
     const {_idPessoa} = request.body
   
@@ -125,4 +125,4 @@ export const removeFuncionario = async (request: Request, response: Response) =>
     }
 
     return response.status(404).json({message: "Funcionário não encontrado"})*/
-};
+//};

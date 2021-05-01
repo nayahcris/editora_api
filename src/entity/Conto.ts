@@ -36,13 +36,13 @@ export class Conto {
     @UpdateDateColumn()
     private _dataUpdate: Date;
 
-    @ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
+    @ManyToOne(type => Editor, editor => editor.getIdEditor)
     private _editor: Editor;
 
-    @ManyToOne(type => Designer, designer => designer.getLivrosTrabalhados)
+    @ManyToOne(type => Designer, designer => designer.getIdDesigner)
     private _designer: Designer;
 
-    @ManyToOne(type => Revisor, revisor => revisor.getLivrosTrabalhados)
+    @ManyToOne(type => Revisor, revisor => revisor.getIdRevisor)
     private _revisor: Revisor;
 
     @ManyToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)

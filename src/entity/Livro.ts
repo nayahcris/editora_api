@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, ManyToMany, JoinTable, OneToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, ManyToMany, JoinTable, OneToOne, UpdateDateColumn, CreateDateColumn} from "typeorm";
 import { Editor } from "./Editor";
 import { Qrcode } from "./Qrcode";
 import { Ra } from "./Ra";
@@ -6,6 +6,7 @@ import { Revisor } from "./Revisor";
 import { Designer } from "./Designer";
 import { Tradutor } from "./Tradutor";
 import { Escritor } from "./Escritor";
+import { type } from "os";
 
 
 @Entity()
@@ -19,25 +20,37 @@ export class Livro {
     @Column()
     private _registroISBN: string;
 
-    @ManyToOne(type => Escritor, escritor => escritor.getOriginais)
-    private _autor: string;
+    @Column("text", {nullable: true})
+    private _conteudo: string;
 
-    @ManyToOne(type => Editor, editor => editor.getLivrosTrabalhados)
+    @Column("text", {nullable: true})
+    private _sinopse: string;
+
+    @CreateDateColumn()
+    private _dataCriacao: Date;
+
+    @UpdateDateColumn()
+    private _dataUpdate: Date;
+
+    @ManyToOne(type => Escritor, escritor => escritor.getIdEscritor)
+    private _escritor: string;
+
+    @ManyToOne(type => Editor, editor => editor.getIdEditor)
     private _editor: Editor;
 
-    @ManyToOne(type => Designer, designer => designer.getLivrosTrabalhados)
+    @ManyToOne(type => Designer, designer => designer.getIdDesigner)
     private _designer: Designer;
 
-    @ManyToOne(type => Tradutor, tradutor => tradutor.getLivrosTrabalhados)
-    private _tradutor: Tradutor;
+    @ManyToOne(type => Revisor, revisor => revisor.getIdRevisor)
+    private _revisor: Revisor;
 
-    @ManyToOne(type => Revisor, revisor => revisor.getLivrosTrabalhados)
-    private _revisores: Revisor;
+    @ManyToOne(type => Tradutor, tradutor => tradutor.getIdTradutor)
+    private _tradutor;
 
-    @OneToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)
+    @ManyToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)
     private _qrcode: Qrcode;
 
-    @OneToOne(type => Ra, ra => ra.getIdRa)
+    @ManyToOne(type => Ra, ra => ra.getIdRa, {nullable: true})
     private _ra: Ra;
 
 
@@ -61,12 +74,12 @@ export class Livro {
         this._registroISBN = RegistroISBN;
     }
 
-    public get getAutor(){
-        return this._autor;
+    public get getEscritor(){
+        return this._escritor;
     }
 
-    public set setAutor(autor: string){
-        this._autor = autor;
+    public set setEscritor(escritor: string){
+        this._escritor = escritor;
     }
 
     public get getEditor(){
@@ -93,12 +106,12 @@ export class Livro {
         this._tradutor = tradutor;
     }
 
-    public get getRevisores(){
-        return this._revisores;
+    public get getRevisor(){
+        return this._revisor;
     }
 
-    public set setRevisores(revisor: Revisor){
-        this._revisores = revisor;
+    public set setRevisor(revisor: Revisor){
+        this._revisor = revisor;
     }
 
 

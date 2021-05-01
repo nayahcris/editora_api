@@ -14,7 +14,7 @@ export class Designer extends Funcionario{
     @OneToMany(type => Conto, conto => conto.getEditor)
     private _contosTrabalhados: Array<Conto>;
 
-    @OneToMany(type => Livro, livro => livro.setDesigner)
+    @OneToMany(type => Livro, livro => livro.getDesigner)
     private _livrosTrabalhados: Array<Livro>;
 
     public get getIdDesigner(){
