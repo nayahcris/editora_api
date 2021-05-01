@@ -82,7 +82,6 @@ export class Conto {
     }
 
 
-
     public get getRegistroISBN(){
         return this._registroISBN;
     }

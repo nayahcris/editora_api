@@ -10,10 +10,11 @@ import { getLivro, getLivros } from './controller/LivroController'
 import { getPessoas, getPessoa, savePessoa, updatePessoa, removePessoa} from './controller/PessoaController'
 import { getRa, getRas } from './controller/RaController'
 import { getRevistas, getRevista } from './controller/RevistaController'
+import { getTradutor, getTradutores } from './controller/TradutorController'
 
 const routes = Router()
 
-routes.get('/', getContos)
+
 //ROTAS DE TAREFAS QUE PRECISO RETIRAR DEPOIS
 //routes.get('/tasks', getTasks)
 //routes.get('/tasks/:id', getTask)
@@ -81,5 +82,9 @@ routes.get('/editores/:_idEditor', getEditor)
 routes.get('/revisores', getRevisores)
 routes.get('/revisores/:_idRevisor', getRevisor)
 
+
+//ROTAS DE REVISOR
+routes.get('/tradutores', getTradutores)
+routes.get('/tradutores/:_idTradutor', getTradutor)
 
 export default routes
