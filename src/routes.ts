@@ -13,7 +13,7 @@ import { getRevistas, getRevista } from './controller/RevistaController'
 
 const routes = Router()
 
-
+routes.get('/', getContos)
 //ROTAS DE TAREFAS QUE PRECISO RETIRAR DEPOIS
 //routes.get('/tasks', getTasks)
 //routes.get('/tasks/:id', getTask)
