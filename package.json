@@ -1,7 +1,7 @@
 {
    "name": "editora_api",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
+   "version": "1.0.0",
+   "description": "Projeto para imersão literária.",
    "devDependencies": {
       "@types/cors": "^2.8.10",
       "@types/express": "^4.17.11",
@@ -19,7 +19,8 @@
       "typeorm": "0.2.32"
    },
    "scripts": {
+      "build": "tsc",
       "dev": "nodemon src/index.ts",
-      "start": "ts-node src/index.ts"
+      "start": "node build/index.js"
    }
 }

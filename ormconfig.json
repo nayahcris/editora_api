@@ -1,9 +1,9 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "ec2-3-233-43-103.compute-1.amazonaws.com",
    "port": 5432,
-   "username": "postgres",
-   "password": "exoweareone",
+   "username": "hvwkcmugtohbls",
+   "password": "337aadb02c3798fbe204b5f0a1d7b5f4cbf32b98c25d5e77ba4d654e440f2b06",
    "database": "editora_testes",
    "synchronize": true,
    "logging": false,
