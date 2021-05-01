@@ -4,7 +4,8 @@
    "port": 5432,
    "username": "hvwkcmugtohbls",
    "password": "337aadb02c3798fbe204b5f0a1d7b5f4cbf32b98c25d5e77ba4d654e440f2b06",
-   "database": "editora_testes",
+   "database":"d664qh3oa7a7k3",
+   "uri": "postgres://hvwkcmugtohbls:337aadb02c3798fbe204b5f0a1d7b5f4cbf32b98c25d5e77ba4d654e440f2b06@ec2-3-233-43-103.compute-1.amazonaws.com:5432/d664qh3oa7a7k3",
    "synchronize": true,
    "logging": false,
    "entities": [
