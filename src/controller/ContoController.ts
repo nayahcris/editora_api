@@ -16,3 +16,15 @@ export const getConto = async (request: Request, response: Response) => {
     "_designer", "_revisor", "_qrcode", "_ra"]})
     return response.json(conto)
 };
+
+export const updateConto = async(request: Request, response: Response) => {
+    const { _idConto } = request.params
+    const conto = await getRepository(Conto).update(_idConto, request.body)
+
+    if (conto.affected === 1){
+        const contoUpdated = await getRepository(Conto).findOne(_idConto)
+        return response.json(contoUpdated)
+    }
+
+    return response.status(404).json({message: "Conto não encontrado"})
+};
