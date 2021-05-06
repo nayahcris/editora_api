@@ -1,7 +1,7 @@
 import {Router, Request, Response} from 'express'
 //import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '../src/controller/TasksController'
 import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getAssinaturas} from './controller/AssinaturaController'
-import { getConto, getContos, updateConto } from './controller/ContoController'
+import { getConto, getContos, removeConto, saveConto, updateConto } from './controller/ContoController'
 import { getDesigner, getDesigners } from './controller/Designer'
 import { getEditor, getEditores } from './controller/EditorController'
 import { getRevisores, getRevisor } from './controller/RevisorController'
@@ -55,6 +55,8 @@ routes.delete('/funcionarios/:_idFuncionario', removeFuncionario)*/
 routes.get('/contos', getContos)
 routes.get('/contos/:_idConto', getConto)
 routes.put('/contos/:_idContos', updateConto)
+routes.post('/contos', saveConto)
+routes.delete('/contos/:_idConto', removeConto)
 
 
 
