@@ -1,5 +1,5 @@
 import {Router, Request, Response} from 'express'
-//import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '../src/controller/TasksController'
+import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '../src/controller/TasksController'
 import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getAssinaturas} from './controller/AssinaturaController'
 import { getConto, getContos, removeConto, saveConto, updateConto } from './controller/ContoController'
 import { getDesigner, getDesigners } from './controller/Designer'
@@ -16,13 +16,13 @@ const routes = Router()
 
 
 //ROTAS DE TAREFAS QUE PRECISO RETIRAR DEPOIS
-//routes.get('/tasks', getTasks)
-//routes.get('/tasks/:id', getTask)
-//routes.post('/tasks', saveTask)
-//routes.put('/tasks/:id', updateTask)
+routes.get('/tasks', getTasks)
+routes.get('/tasks/:id', getTask)
+routes.post('/tasks', saveTask)
+routes.put('/tasks/:id', updateTask)
 //PATCH -> APENAS 1 REGISTRO NO BANCO
-//routes.patch('/tasks/:id', finishTask)
-//routes.delete('/tasks/:id', removeTask)
+routes.patch('/tasks/:id', finishTask)
+routes.delete('/tasks/:id', removeTask)
 
 //ROUTAS DE PESSOA
 routes.get('/pessoas', getPessoas)

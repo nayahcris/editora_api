@@ -18,13 +18,13 @@ export class Conto {
     @ManyToOne(type => Revista, revista => revista.getNumeroRevista, {nullable: true})
     private _numeroRevista: Revista;
 
-    @Column()
+    @Column({nullable: true})
     private _registroISBN: string;
 
     @Column()
     private _autor: string;
 
-    @Column("text")
+    @Column("text", {nullable:true})
     private _conteudo: string;
 
     @Column("text")
@@ -36,16 +36,16 @@ export class Conto {
     @UpdateDateColumn()
     private _dataUpdate: Date;
 
-    @ManyToOne(type => Editor, editor => editor.getIdEditor)
+    @ManyToOne(type => Editor, editor => editor.getIdEditor, {nullable: true})
     private _editor: Editor;
 
-    @ManyToOne(type => Designer, designer => designer.getIdDesigner)
+    @ManyToOne(type => Designer, designer => designer.getIdDesigner, {nullable: true})
     private _designer: Designer;
 
-    @ManyToOne(type => Revisor, revisor => revisor.getIdRevisor)
+    @ManyToOne(type => Revisor, revisor => revisor.getIdRevisor, {nullable: true})
     private _revisor: Revisor;
 
-    @ManyToOne(type => Qrcode, qrcode => qrcode.getIdQrcode)
+    @ManyToOne(type => Qrcode, qrcode => qrcode.getIdQrcode, {nullable: true})
     private _qrcode: Qrcode;
 
     @ManyToOne(type => Ra, ra => ra.getIdRa, {nullable: true})
