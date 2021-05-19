@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn, OneToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn} from "typeorm";
 import { Editor } from "./Editor";
 import { Qrcode } from "./Qrcode";
 import { Ra } from "./Ra";
@@ -14,9 +14,6 @@ export class Conto {
 
     @Column()
     private _nomeConto: string;
-
-    @ManyToOne(type => Revista, revista => revista.getNumeroRevista, {nullable: true})
-    private _numeroRevista: Revista;
 
     @Column({nullable: true})
     private _registroISBN: string;
@@ -35,6 +32,9 @@ export class Conto {
 
     @UpdateDateColumn()
     private _dataUpdate: Date;
+
+    @ManyToOne(type => Revista, revista => revista.getNumeroRevista, {nullable: true})
+    private _numeroRevista: Revista;
 
     @ManyToOne(type => Editor, editor => editor.getIdEditor, {nullable: true})
     private _editor: Editor;

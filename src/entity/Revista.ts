@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinTable} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinTable, OneToOne} from "typeorm";
 import { Editor } from "./Editor";
 import { Conto } from "./Conto";
 
@@ -14,7 +14,7 @@ export class Revista {
     @Column()
     private _generoRevista: string;
 
-    @ManyToOne(type => Editor, editor => editor.getContosTrabalhados)
+    @OneToOne(type => Editor, editor => editor.getContosTrabalhados)
     private _responsavel: Editor;
 
 

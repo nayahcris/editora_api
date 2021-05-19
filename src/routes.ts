@@ -3,7 +3,7 @@ import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '.
 import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getAssinaturas} from './controller/AssinaturaController'
 import { getConto, getContos, removeConto, saveConto, updateConto } from './controller/ContoController'
 import { getDesigner, getDesigners } from './controller/Designer'
-import { getEditor, getEditores } from './controller/EditorController'
+import { getEditor, getEditores, saveEditor } from './controller/EditorController'
 import { getRevisores, getRevisor } from './controller/RevisorController'
 //import { getFuncionario, getFuncionarios, saveFuncionario, updateFuncionario, removeFuncionario } from './controller/FuncionarioController'
 import { getLivro, getLivros } from './controller/LivroController'
@@ -80,6 +80,7 @@ routes.get('/designers/:_idDesigner', getDesigner)
 //ROTAS DE EDITOR
 routes.get('/editores', getEditores)
 routes.get('/editores/:_idEditor', getEditor)
+routes.post('/editores', saveEditor)
 
 //ROTAS DE REVISOR
 routes.get('/revisores', getRevisores)

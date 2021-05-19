@@ -22,15 +22,18 @@ export class Ra {
     @Column({nullable: true})
     private _urlDaRA: string;
 
-    @ManyToOne(type => Designer, designer => designer.getIdDesigner, {nullable: true})
-    private _designerResponsavel: Designer;
-
     @Column({default: false})
     private _foiPublicado: boolean;
+
+    @OneToOne(type => Designer, designer => designer.getIdDesigner, {nullable: true})
+    private _designerResponsavel: Designer;
 
     @OneToOne(type => Conto, conto => conto.getIdConto, {nullable: true})
     private _conto: Conto;
 
+
+
+    
     public get getIdRa(){
         return this._idRa;
     }

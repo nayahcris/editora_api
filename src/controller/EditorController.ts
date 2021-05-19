@@ -15,3 +15,9 @@ export const getEditor = async (request: Request, response: Response) => {
     const editor = await getRepository(Editor).find({where: [{ _idEditor: _idEditor }]})
     return response.json(editor)
 };
+
+//SALVA EDITOR
+export const saveEditor = async(request: Request, response: Response) => {
+    const editor = await getRepository(Editor).save(request.body)
+    return response.json(editor);
+};

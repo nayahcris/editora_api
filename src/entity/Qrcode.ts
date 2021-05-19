@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, FileLogger, ManyToMany, JoinColumn, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, FileLogger, ManyToMany, JoinColumn, ManyToOne, OneToOne} from "typeorm";
 import { Designer } from "./Designer";
 
 
@@ -13,7 +13,7 @@ export class Qrcode {
     @Column()
     private _urlDoArquivo: string;
 
-    @ManyToOne(type => Designer, designer => designer.getIdDesigner)
+    @OneToOne(type => Designer, designer => designer.getIdDesigner)
     private _designerResponsavel: Designer;
 
     @Column({default: false})
