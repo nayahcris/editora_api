@@ -6,7 +6,7 @@ import { Conto } from '../entity/Conto';
 export const getContos = async (request: Request, response: Response) => {
     const contos = await getRepository(Conto).find({relations: ["_numeroRevista", "_editor", 
     "_designer", "_revisor", "_qrcode", "_ra"]})
-    return response.json(contos)
+    return response.status(200).json(contos)
 };
 
 //LISTA CONTO PELO ID
@@ -44,7 +44,7 @@ export const removeConto = async (request: Request, response: Response) => {
     if (conto.affected === 1){
         const contoRemovido = await getRepository(Conto).findOne(_idConto, {relations: ["_numeroRevista", "_editor", 
         "_designer", "_revisor", "_qrcode", "_ra"]})
-        return response.json({message: "Conto Removido"})
+        return response.status(200).json({message: "Conto Removido"})
     }
 
     return response.status(404).json({message: "Conto não encontrado"})

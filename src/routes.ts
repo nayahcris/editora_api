@@ -2,8 +2,8 @@ import {Router, Request, Response} from 'express'
 import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '../src/controller/TasksController'
 import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getAssinaturas} from './controller/AssinaturaController'
 import { getConto, getContos, removeConto, saveConto, updateConto } from './controller/ContoController'
-import { getDesigner, getDesigners } from './controller/Designer'
-import { getEditor, getEditores, saveEditor } from './controller/EditorController'
+import { getDesigner, getDesigners, saveDesigner, updateDesigner } from './controller/DesignerController'
+import { getEditor, getEditores, saveEditor, updateEditor } from './controller/EditorController'
 import { getRevisores, getRevisor } from './controller/RevisorController'
 //import { getFuncionario, getFuncionarios, saveFuncionario, updateFuncionario, removeFuncionario } from './controller/FuncionarioController'
 import { getLivro, getLivros } from './controller/LivroController'
@@ -11,6 +11,7 @@ import { getPessoas, getPessoa, savePessoa, updatePessoa, removePessoa} from './
 import { getRa, getRas } from './controller/RaController'
 import { getRevistas, getRevista } from './controller/RevistaController'
 import { getTradutor, getTradutores } from './controller/TradutorController'
+import { getEscritores } from './controller/EscritorController'
 
 const routes = Router()
 
@@ -76,19 +77,26 @@ routes.get('/livros/:_idLivro', getLivro)
 //ROTAS DE DESIGNER
 routes.get('/designers', getDesigners)
 routes.get('/designers/:_idDesigner', getDesigner)
+routes.post('/designers', saveDesigner)
+routes.put('/designers/:_idDesigner', updateDesigner)
 
 //ROTAS DE EDITOR
 routes.get('/editores', getEditores)
 routes.get('/editores/:_idEditor', getEditor)
 routes.post('/editores', saveEditor)
+routes.put('/editores/:_idEditor', updateEditor)
 
 //ROTAS DE REVISOR
 routes.get('/revisores', getRevisores)
 routes.get('/revisores/:_idRevisor', getRevisor)
 
 
-//ROTAS DE REVISOR
+//ROTAS DE TRADUTOR
 routes.get('/tradutores', getTradutores)
 routes.get('/tradutores/:_idTradutor', getTradutor)
+
+
+//ROTAS DE ESCRITOR
+routes.get('/escritores', getEscritores)
 
 export default routes

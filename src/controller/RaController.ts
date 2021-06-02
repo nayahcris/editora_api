@@ -4,7 +4,7 @@ import { Ra } from '../entity/Ra';
 
 //LISTA TODOS AS RA
 export const getRas = async (request: Request, response: Response) => {
-    const realidadesAumentadas = await getRepository(Ra).find({relations: ["_designerResponsavel"]})
+    const realidadesAumentadas = await getRepository(Ra).find()
     return response.json(realidadesAumentadas)
 };
 
