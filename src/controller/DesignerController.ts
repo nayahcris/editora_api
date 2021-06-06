@@ -32,3 +32,16 @@ export const saveDesigner = async(request: Request, response: Response) => {
     const designer = await getRepository(Designer).save(request.body)
     return response.json(designer);
 };
+
+//DELETA UM DESIGNER
+export const removeDesigner = async (request: Request, response: Response) => {
+    const { _idDesigner } = request.params
+    const designer = await getRepository(Designer).delete(_idDesigner)
+
+    if (designer.affected === 1){
+        const designerRemovido = await getRepository(Designer).findOne(_idDesigner, {where: [{ _idDesigner: _idDesigner }]})
+        return response.status(200)
+    }
+
+    return response.status(404)
+};

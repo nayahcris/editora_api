@@ -31,3 +31,16 @@ export const updateEditor = async(request: Request, response: Response) => {
 
     return response.status(200).json(contoatt)
 };
+
+//DELETA UM EDITOR
+export const removeEditor = async (request: Request, response: Response) => {
+    const { _idEditor } = request.params
+    const editor = await getRepository(Editor).delete(_idEditor)
+
+    if (editor.affected === 1){
+        const editorRemovido = await getRepository(Editor).findOne(_idEditor, {where: [{ _idEditor: _idEditor }]})
+        return response.status(200)
+    }
+
+    return response.status(404)
+};
