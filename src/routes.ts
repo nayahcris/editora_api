@@ -2,16 +2,16 @@ import {Router, Request, Response} from 'express'
 import {getTasks, saveTask, getTask, updateTask, finishTask, removeTask} from '../src/controller/TasksController'
 import { getAssinatura, saveAssinatura, updateAssinatura, removeAssinatura, getAssinaturas} from './controller/AssinaturaController'
 import { getConto, getContos, removeConto, saveConto, updateConto } from './controller/ContoController'
-import { getDesigner, getDesigners, saveDesigner, updateDesigner } from './controller/DesignerController'
-import { getEditor, getEditores, saveEditor, updateEditor } from './controller/EditorController'
-import { getRevisores, getRevisor } from './controller/RevisorController'
+import { getDesigner, getDesigners, removeDesigner, saveDesigner, updateDesigner } from './controller/DesignerController'
+import { getEditor, getEditores, removeEditor, saveEditor, updateEditor } from './controller/EditorController'
+import { getRevisores, getRevisor, updateRevisor, saveRevisor, removeRevisor } from './controller/RevisorController'
 //import { getFuncionario, getFuncionarios, saveFuncionario, updateFuncionario, removeFuncionario } from './controller/FuncionarioController'
-import { getLivro, getLivros } from './controller/LivroController'
+import { getLivro, getLivros, removeLivro, saveLivro, updateLivro } from './controller/LivroController'
 import { getPessoas, getPessoa, savePessoa, updatePessoa, removePessoa} from './controller/PessoaController'
 import { getRa, getRas } from './controller/RaController'
-import { getRevistas, getRevista } from './controller/RevistaController'
-import { getTradutor, getTradutores } from './controller/TradutorController'
-import { getEscritores } from './controller/EscritorController'
+import { getRevistas, getRevista, updateRevista, saveRevista, removeRevista } from './controller/RevistaController'
+import { getTradutor, getTradutores, removeTradutor, saveTradutor, updateTradutor } from './controller/TradutorController'
+import { getEscritor, getEscritores, removeEscritor, saveEscritor, updateEscritor } from './controller/EscritorController'
 
 const routes = Router()
 
@@ -64,6 +64,9 @@ routes.delete('/contos/:_idConto', removeConto)
 //ROTAS DE REVISTA
 routes.get('/revistas', getRevistas)
 routes.get('/revistas/:_idRevista', getRevista)
+routes.put('/revistas/:_idRevista', updateRevista)
+routes.post('/revistas', saveRevista)
+routes.delete('/revistas/:_idRevista', removeRevista)
 
 
 //ROTAS DE RA
@@ -73,30 +76,45 @@ routes.get('/ras/:_idRa', getRa)
 //ROTAS DE LIVRO
 routes.get('/livros', getLivros)
 routes.get('/livros/:_idLivro', getLivro)
+routes.put('/livros/:_idLivro', updateLivro)
+routes.post('/livros', saveLivro)
+routes.delete('/livros/:_idLivro', removeLivro)
 
 //ROTAS DE DESIGNER
 routes.get('/designers', getDesigners)
 routes.get('/designers/:_idDesigner', getDesigner)
 routes.post('/designers', saveDesigner)
 routes.put('/designers/:_idDesigner', updateDesigner)
+routes.delete('/designers/:_idDeseigner', removeDesigner)
 
 //ROTAS DE EDITOR
 routes.get('/editores', getEditores)
 routes.get('/editores/:_idEditor', getEditor)
 routes.post('/editores', saveEditor)
 routes.put('/editores/:_idEditor', updateEditor)
+routes.delete('/editores/:_idEditor', removeEditor)
 
 //ROTAS DE REVISOR
 routes.get('/revisores', getRevisores)
 routes.get('/revisores/:_idRevisor', getRevisor)
+routes.put('/revisores/:_idRevisor', updateRevisor)
+routes.post('/revisores', saveRevisor)
+routes.delete('/revisores/:_idRevisor', removeRevisor)
 
 
 //ROTAS DE TRADUTOR
 routes.get('/tradutores', getTradutores)
 routes.get('/tradutores/:_idTradutor', getTradutor)
+routes.put('/tradutores/:_idTradutor', updateTradutor)
+routes.post('/tradutores', saveTradutor)
+routes.delete('/tradutores/:_idTradutor', removeTradutor)
 
 
 //ROTAS DE ESCRITOR
 routes.get('/escritores', getEscritores)
+routes.get('/escritores/:_idEscritor', getEscritor)
+routes.put('/escritores/:_idEscritor', updateEscritor)
+routes.post('/escritores', saveEscritor)
+routes.delete('/escritores/:_idEscritor', removeEscritor)
 
 export default routes
