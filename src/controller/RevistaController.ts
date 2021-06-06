@@ -8,6 +8,8 @@ export const getRevistas = async (request: Request, response: Response) => {
     return response.json(revistas)
 };
 
+
+//LISTA REVISTA POR ID
 export const getRevista = async (request: Request, response: Response) => {
     const { _idRevista } = request.params
     const revista = await getRepository(Revista).findOne(_idRevista)
